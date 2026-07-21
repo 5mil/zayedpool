@@ -1,0 +1,21 @@
+# ZayedPool Configuration - ZayedCoin Primary
+
+network = "main"  # or "testnet" if available
+
+[bitcoinrpc]
+url = "http://bitcoind:8332"  # Change to your ZayedCoin daemon RPC
+username = "zayedrpc"
+password = "strongpasswordhere"
+
+zmqpubhashblock = "tcp://bitcoind:28334"
+
+# ZayedCoin specific adjustments
+bootstrap_address = "YOUR_ZYD_BOOTSTRAP_ADDRESS_HERE"
+
+# Pool settings
+stratum_port = 3333
+api_port = 46884
+
+# Payout & share settings (tune for ZYD)
+pplns_window = 3600
+min_payout = 1.0  # in ZYD

@@ -1,0 +1,32 @@
+services:
+  hydrapool:
+    image: ghcr.io/256foundation/hydrapool:latest
+    container_name: zayedpool
+    restart: unless-stopped
+    ports:
+      - "3333:3333"    # Stratum
+      - "46884:46884"  # API
+    volumes:
+      - ./config.toml:/app/config.toml:ro
+    depends_on:
+      - bitcoind  # or your coin daemon
+
+  bitcoind:
+    image: lncm/bitcoind:latest  # Replace with ZayedCoin daemon image if available
+    container_name: zayedcoind
+    restart: unless-stopped
+    volumes:
+      - bitcoind-data:/data
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+
+volumes:
+  bitcoind-data:
