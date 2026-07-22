@@ -1,7 +1,4 @@
-# fly.toml app configuration file generated for zayedpool on 2026-07-22T01:43:43Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+# fly.toml app configuration file for zayedpool
 
 app = 'zayedpool'
 primary_region = 'ams'
