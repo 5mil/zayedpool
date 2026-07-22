@@ -1,30 +1,36 @@
-# ZayedPool - Official Mining Pool for ZayedCoin (ZYD) & Beyond
+# ZayedPool
 
-One-click deployable open-source mining pool with **ZayedCoin (SHA256)** as the primary coin.
+**Open-source mining pool for ZayedCoin (ZYD)** — easy one-click Docker deployment.
 
 ## Features
-- ZayedCoin pre-configured
-- Docker Compose deployment
+- ZayedCoin (SHA256) pre-configured as primary coin
 - Stratum V1/V2
 - PPLNS + Solo modes
-- Prometheus + Grafana monitoring
-- Easy to add more coins
+- Prometheus + Grafana monitoring out of the box
+- Easy to extend to other coins
 
 ## Quick Start
 
-1. Clone this repo
-2. Edit `config.toml` with your node details
-3. `docker compose up -d`
+```bash
+git clone https://github.com/5mil/zayedpool.git
+cd zayedpool
+nano config.toml          # set your RPC + wallet address
+docker compose up -d
+```
 
-Stratum: `stratum+tcp://your-ip:3333`
+**Stratum endpoint:** `stratum+tcp://YOUR_IP:3333`  
+**Dashboard:** `http://YOUR_IP:3000` (admin/admin — change it)
 
-## ZayedCoin Specs (for reference)
-- Algorithm: SHA256
-- Block time: ~90 seconds
-- Ports / RPC: Adjust in config
+## Documentation
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Oracle Cloud Free Tier](docs/ORACLE_CLOUD.md)
+- [Development Roadmap](DEVELOPMENT.md)
 
-See `docs/` for full deployment guides.
+## Miner Configuration
+See the `miner-examples/` folder for sample configs.
+
+## License
+MIT
 
 ---
-
-**Made for the community. Launch your own ZayedCoin pool today!**
+Made for the ZayedCoin community.
