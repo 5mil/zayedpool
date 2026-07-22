@@ -1,12 +1,21 @@
 FROM nginx:alpine
 
-# Copy static landing page
+# Copy the landing page
 COPY index.html /usr/share/nginx/html/index.html
 
-# Fly.io expects 8080
-EXPOSE 8080
+# Create a custom nginx config that listens on 8080 and 0.0.0.0
+RUN echo 'server {
+    listen 8080;
+    listen [::]:8080;
+    server_name _;
 
-# Tell nginx to listen on 8080
-RUN sed -i 's/listen\s*80;/listen 8080;/' /etc/nginx/conf.d/default.conf
+    location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+}' > /etc/nginx/conf.d/default.conf
+
+EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
